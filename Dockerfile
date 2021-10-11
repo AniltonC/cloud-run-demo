@@ -1,6 +1,6 @@
 # Use the official lightweight Node.js 12 image.
 # https://hub.docker.com/_/node
-FROM node:16-slim
+FROM node:14.17.5-alpine3.14
 
 # Create and change to the app directory.
 WORKDIR /usr/src/app
@@ -15,12 +15,11 @@ COPY package*.json ./
 # RUN npm ci --only=production
 RUN npm install --production
 
+
 # Copy local code to the container image.
 COPY . ./
 
+# RUN npm tsc
+
 # Run the web service on container startup.
-RUN npm build
-
-RUN rm -rf src
-
-CMD ["npm", "start"]
+CMD ["node", "./dist/index.js"]
