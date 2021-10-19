@@ -29,7 +29,7 @@ app.get('/', async (req, res) => {
 	// Apply the template to the parameters to generate an HTML string.
 	try {
 		const output = template(data);
-		res.status(200).send('Salve Akiry!');
+		res.status(200).send(output);
 	} catch (e) {
 		console.error(e);
 		res.status(500).send('Internal Server Error');
